@@ -1,124 +1,68 @@
-# Kairos Living Glory Church App - Separated Frontend & Backend
+# Kairos Living Glory Church App
 
-This project has been split into a proper **frontend** and **backend** architecture.
+A separated frontend/backend church web app for livestreaming, community chat, events, Bible/devotionals, prayer requests, giving, and admin management.
 
-## Project Structure
+## Structure
 
-```
-.
-├── frontend/              # React-free frontend (HTML, CSS, JS)
-│   ├── index.html        # Main HTML file
-│   ├── styles.css        # Styles
-│   ├── app.js            # Frontend application logic
-│   ├── api.js            # API client library
-│   └── package.json
-│
-├── backend/              # Express.js backend API
-│   ├── server.js         # Express server with all routes
-│   ├── data.json         # Persistent data storage
-│   └── package.json
-│
-└── package.json          # Root package with scripts
+```text
+frontend/   Static app: HTML, CSS, and ES modules
+backend/    Node.js API and JSON persistence
+firebase.json  Firebase Hosting config for frontend/
 ```
 
-## Architecture
+## Features
 
-### Backend (Node.js + Express)
-- **Port:** 3001
-- **Data Storage:** JSON file (`data.json`)
-- **Responsibilities:**
-  - User authentication (member and admin)
-  - Prayer requests management
-  - Chat message handling
-  - Notes storage
-  - Sermon, devotional, and event management
-  - Admin moderation and analytics
+- Member sign-in with backend-issued session token
+- Custom live-streaming interface
+- Community chat stored through the API
+- Events and announcements
+- Bible/devotional notes
+- Prayer request queue with admin approval
+- Admin dashboard for sermons, devotionals, events, moderation, and analytics
 
-**API Endpoints:**
-- `POST /api/auth/signin` - Member sign-in
-- `GET /api/auth/me` - Get current user
-- `GET/POST /api/prayers` - Prayer requests
-- `GET/POST /api/chat` - Chat messages
-- `GET/POST /api/notes` - User notes
-- `GET/POST /api/sermons` - Sermon management
-- `GET/POST /api/devotionals` - Devotional management
-- `GET/POST /api/events` - Event management
-- `POST /api/admin/signin` - Admin authentication
-- `GET /api/admin/stats` - Admin analytics
+## Local Development
 
-### Frontend (Vanilla JavaScript)
-- **Port:** 5000+ (via local dev server)
-- **Dependencies:** None (no frameworks, pure HTML/CSS/JS)
-- **Responsibilities:**
-  - User interface and interactions
-  - API calls to backend
-  - Session management
-  - Local storage for tokens
+No npm package installation is required for the current code path.
 
-**Key Files:**
-- `api.js` - Centralized API client with helper functions
-- `app.js` - Main application logic with DOM manipulation
+```bash
+npm run check
+npm run dev:backend
+npm run dev:frontend
+```
 
-## Getting Started
+Open the frontend at `http://localhost:5000`.
 
-### Setup
+## API
 
-1. **Install dependencies for both frontend and backend:**
-   ```bash
-   npm run install-all
-   ```
+The frontend chooses the API URL automatically:
 
-2. **Start both servers (from root directory):**
-   ```bash
-   npm run dev
-   ```
+- Localhost frontend: `http://localhost:3001/api`
+- Production fallback: `https://klgc.onrender.com/api`
+- Override: set `window.KLGC_API_BASE` before `app.js`
 
-   Or start them individually:
-   ```bash
-   npm run dev:backend    # Terminal 1 - Backend on port 3001
-   npm run dev:frontend   # Terminal 2 - Frontend local server
-   ```
+Useful endpoint:
 
-### First Time Admin Setup
+```bash
+curl http://127.0.0.1:3001/api/health
+```
 
-When you access the admin dashboard for the first time:
-1. Click "Unlock dashboard"
-2. Enter an admin email and passcode (min 10 characters)
-3. This creates a local credential that's stored in `backend/data.json`
-4. On subsequent visits, use the same credentials to sign in
+## Firebase Publish
 
-## Data Persistence
+Firebase Hosting is configured for `frontend/`.
 
-- **Backend Data:** Stored in `backend/data.json`
-- **User Sessions:** Stored in `data.json` and expire based on set duration
-- **Frontend Tokens:** Stored in `sessionStorage` (cleared when browser closes)
+```bash
+firebase login
+firebase use --add
+firebase deploy --only hosting
+```
 
-## Key Changes from Original
+Hosting deploys the frontend only. Deploy the backend separately and point the frontend to that deployed API URL.
 
-| Original | New |
-|----------|-----|
-| All data in localStorage | Data in backend/data.json |
-| No server needed | Express.js backend required |
-| Single HTML file | Separated frontend/backend files |
-| No API, pure client-side | Full REST API |
-| Local admin passcode | Server-validated credentials |
-| No data persistence between sessions | Persistent server data |
+## Production Notes
 
-## Development Notes
+Before real church production use:
 
-- Backend uses ES modules (`import`/`export`)
-- Frontend is vanilla JavaScript with ES modules
-- CORS is enabled for local development
-- Token-based authentication with Bearer tokens
-- All data is validated on the backend
-
-## Future Improvements
-
-Before production deployment:
-1. Replace JSON file storage with a proper database (MongoDB, PostgreSQL)
-2. Add proper user authentication (Firebase, Auth0)
-3. Implement password hashing with bcrypt
-4. Add HTTPS and secure cookie handling
-5. Add input validation and rate limiting
-6. Deploy backend and frontend to separate servers
-7. Update CORS configuration for production domain
+- Move data from `backend/data.json` to Firestore, PostgreSQL, or another database.
+- Use Firebase Auth or another auth provider with real password hashing/admin claims.
+- Store sermon/audio/video uploads in Firebase Storage, Cloud Storage, or a media platform.
+- Add rate limiting, audit logs, backups, and stricter CORS origins.

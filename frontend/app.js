@@ -127,6 +127,15 @@ async function renderChat() {
 }
 
 async function renderNotes() {
+  if (!apiStore.token) {
+    savedNotes.innerHTML = "";
+    const empty = document.createElement("div");
+    empty.className = "note-item";
+    empty.textContent = "Sign in to save reading notes.";
+    savedNotes.append(empty);
+    return;
+  }
+
   try {
     const data = await notesAPI.getAll();
     appState.notes = data.notes;
@@ -229,10 +238,16 @@ async function renderAdmin() {
       ]),
     );
 
-    const stats = await adminAPI.getStats();
-    metricPrayers.textContent = String(stats.prayerCount);
-    metricChats.textContent = String(stats.chatCount);
-    metricViewers.textContent = String(stats.viewers);
+    if (adminAPI.hasToken()) {
+      const stats = await adminAPI.getStats();
+      metricPrayers.textContent = String(stats.prayerCount);
+      metricChats.textContent = String(stats.chatCount);
+      metricViewers.textContent = String(stats.viewers);
+    } else {
+      metricPrayers.textContent = String(appState.prayers.length);
+      metricChats.textContent = String(appState.chat.length);
+      metricViewers.textContent = String(248 + appState.chat.length);
+    }
   } catch (error) {
     console.error('Error rendering admin:', error);
   }
@@ -289,7 +304,7 @@ prayerForm.addEventListener("submit", async (event) => {
     prayerInput.value = "";
     await renderPrayers();
   } catch (error) {
-    console.error('Error submitting prayer:', error);
+    authState.textContent = error.message.includes('token') ? 'Sign in before adding a prayer request.' : error.message;
   }
 });
 
@@ -304,7 +319,7 @@ chatForm.addEventListener("submit", async (event) => {
     await renderChat();
     await renderAdmin();
   } catch (error) {
-    console.error('Error sending message:', error);
+    chatInput.placeholder = error.message.includes('token') ? 'Sign in first, then send a chat message.' : error.message;
   }
 });
 
@@ -318,7 +333,7 @@ notesForm.addEventListener("submit", async (event) => {
     noteInput.value = "";
     await renderNotes();
   } catch (error) {
-    console.error('Error saving note:', error);
+    noteInput.placeholder = error.message.includes('token') ? 'Sign in first, then save notes.' : error.message;
   }
 });
 
@@ -480,6 +495,7 @@ document.addEventListener("click", async (event) => {
 
   if (target.dataset.action === "admin-logout") {
     adminAPI.logout();
+    adminAuthState.textContent = "Admin signed out";
     await renderAdmin();
   }
 

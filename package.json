@@ -3,15 +3,13 @@
   "version": "1.0.0",
   "description": "Separated frontend and backend for Kairos Living Glory Church",
   "private": true,
+  "type": "module",
   "scripts": {
-    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
-    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev": "node scripts/dev.mjs",
     "dev:backend": "cd backend && npm run dev",
     "dev:frontend": "cd frontend && npm start",
     "start:backend": "cd backend && npm start",
-    "start:frontend": "cd frontend && npm start"
-  },
-  "devDependencies": {
-    "concurrently": "^8.0.0"
+    "start:frontend": "cd frontend && npm start",
+    "check": "node --check backend/server.js && node --check frontend/api.js && node --check frontend/app.js"
   }
 }

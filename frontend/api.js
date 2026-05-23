@@ -1,8 +1,14 @@
 // API Configuration
-const API_BASE = 'https://klgc.onrender.com/api';
+// Local frontend runs on port 5000 and talks to the Express API on 3001.
+// Production can override this by setting window.KLGC_API_BASE before app.js.
+const API_BASE =
+  window.KLGC_API_BASE ||
+  (location.hostname === 'localhost' || location.hostname === '127.0.0.1'
+    ? 'http://localhost:3001/api'
+    : 'https://klgc.onrender.com/api');
 
 // Store token in sessionStorage
-const apiStore = {
+export const apiStore = {
   get token() {
     return sessionStorage.getItem('iam-token');
   },
@@ -192,6 +198,8 @@ export const eventAPI = {
 
 // ADMIN API
 export const adminAPI = {
+  hasToken: () => Boolean(apiStore.adminToken),
+
   signin: async (email, passcode, remember = false) => {
     const data = await apiCall('/admin/signin', {
       method: 'POST',

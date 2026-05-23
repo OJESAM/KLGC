@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "kairos-living-glory-church"
-  }
+    "default": "kairos-living-glory-church",
+    "production": "kairos-living-glory-church"
+  },
+  "targets": {},
+  "etags": {}
 }
