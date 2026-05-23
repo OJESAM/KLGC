@@ -5,7 +5,7 @@ const API_BASE =
   window.KLGC_API_BASE ||
   (location.hostname === 'localhost' || location.hostname === '127.0.0.1'
     ? 'http://localhost:3001/api'
-    : 'https://klgc.onrender.com/api');
+    : 'https://klg-qxsg.onrender.com');
 
 // Store token in sessionStorage
 export const apiStore = {
