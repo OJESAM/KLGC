@@ -1,0 +1,10 @@
+{
+  "name": "church-app-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for Kairos Living Glory Church app",
+  "type": "module",
+  "scripts": {
+    "start": "python3 -m http.server 5000",
+    "dev": "python3 -m http.server 5000"
+  }
+}

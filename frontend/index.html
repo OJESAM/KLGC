@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="Kairos Living Glory Church, Prophetic Ministry, Kingdom of God, Worship, Sunday Service, Divine Timing, Prophetic Word, Bible Teaching">
+    <title>Kairos Living Glory Church</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="boot" id="boot" aria-label="Opening screen">
+      <iframe class="boot-video" width="100%" height="100%" src="https://www.youtube.com/embed/_YJULt4bahs?autoplay=1&mute=1&loop=1&playlist=_YJULt4bahs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <a href="#watch" class="stream-live">Click to continue to the site</a>
+    </div>
+
+    <header class="topbar" aria-label="Primary">
+      <a class="brand" href="#home" aria-label="Kairos Living Glory Church home">
+        <span class="brand-mark">KLGC</span>
+        <span>Kairos Living Glory Church</span>
+      </a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#watch">Watch</a>
+        <a href="#gather">Gather</a>
+        <a href="#events">Events</a>
+        <a href="#bible">Bible</a>
+        <a href="#prayer">Prayer</a>
+        <a href="#give">Give</a>
+        <a href="#admin">Admin</a>
+      </nav>
+      <button class="icon-button mobile-menu" type="button" aria-label="Open menu" data-action="toggle-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+      <a href="#watch">Watch</a>
+      <a href="#gather">Gather</a>
+      <a href="#events">Events</a>
+      <a href="#bible">Bible</a>
+      <a href="#prayer">Prayer</a>
+      <a href="#give">Give</a>
+      <a href="#admin">Admin</a>
+    </nav>
+
+    <main id="home">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-media" role="img" aria-label="Sunlit sanctuary seats facing a bright cross"></div>
+        <div class="hero-copy">
+          <p class="eyebrow">A house of worship, Word, and Witness</p>
+          <h1 id="hero-title">Kairos Living Glory Church</h1>
+          <p class="hero-text">One church family gathered around the presence of God, the care of people, and a living faith for every day.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#auth">Join worship</a>
+            <a class="button ghost" href="#watch">Watch live</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="auth-section" id="auth" aria-labelledby="auth-title">
+        <div class="auth-copy">
+          <p class="eyebrow">Member access</p>
+          <h2 id="auth-title">Start with a simple sign in.</h2>
+          <p>Save prayer requests, keep worship notes, and stay close to the next gathering.</p>
+        </div>
+        <form class="auth-card" id="authForm">
+          <label>
+            Name
+            <input id="nameInput" name="name" type="text" autocomplete="name" placeholder="Your name" required />
+          </label>
+          <label>
+            Email
+            <input id="emailInput" name="email" type="text" inputmode="email" autocomplete="email" placeholder="you@example.com" required />
+          </label>
+          <label>
+            Password
+            <input id="passwordInput" name="password" type="password" autocomplete="current-password" placeholder="At least 8 characters" minlength="8" required />
+          </label>
+          <button class="button primary full" type="submit">Enter I AM</button>
+          <p class="auth-state" id="authState" aria-live="polite">Member sign-in ready</p>
+        </form>
+      </section>
+
+      <section class="welcome-band" aria-live="polite">
+        <div>
+          <p class="eyebrow">Today</p>
+          <h2 id="welcomeTitle">Welcome home.</h2>
+        </div>
+        <div class="today-list" aria-label="Today at I AM">
+          <span>Morning prayer 7:00</span>
+          <span>Midweek word 18:30</span>
+          <span>Care team online</span>
+        </div>
+      </section>
+
+      <section class="section-grid" id="watch" aria-labelledby="watch-title">
+        <div class="section-heading">
+          <p class="eyebrow">Watch</p>
+          <h2 id="watch-title">Live streaming</h2>
+        </div>
+        <article class="feature-panel">
+          <div class="custom-stream" aria-label="Custom live streaming player">
+            <div class="stream-screen">
+              <span class="stream-status">I AM Live</span>
+              <button class="stream-play" type="button" aria-label="Open live stream" data-action="play">
+                <span></span>
+              </button>
+              <div class="stream-controls" aria-hidden="true">
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="label">Custom stream</p>
+            <h3>Join the service live</h3>
+            <p>Worship with I AM from wherever you are through our custom live streaming room.</p>
+            <button class="button primary" type="button" data-action="play">Open live stream</button>
+            <button class="button secondary" type="button" data-action="save-sermon">Save stream</button>
+          </div>
+        </article>
+      </section>
+
+      <section class="chat-section" id="community-chat" aria-labelledby="chat-title">
+        <div class="chat-details">
+          <p class="eyebrow">Community chat</p>
+          <h2 id="chat-title">Share greetings, prayer, and notes.</h2>
+          <p>Use the live chat to welcome people, ask for prayer, and respond during worship. Hosts keep the room focused and kind.</p>
+          <div class="chat-meta" aria-label="Chat details">
+            <span>Host: Care Team</span>
+            <span>Room: I AM Live</span>
+            <span>Online: <strong id="onlineCount">128</strong></span>
+          </div>
+        </div>
+        <div class="chat-panel">
+          <div class="chat-header">
+            <span>Live community</span>
+            <span class="chat-live-dot">Open</span>
+          </div>
+          <div class="chat-messages" id="chatMessages" aria-live="polite"></div>
+          <form class="chat-form" id="chatForm">
+            <label>
+              Message
+              <input id="chatInput" type="text" placeholder="Write a welcome, prayer, or amen..." required />
+            </label>
+            <button class="button primary" type="submit">Send</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="section-grid" id="gather" aria-labelledby="gather-title">
+        <div class="section-heading">
+          <p class="eyebrow">Gather</p>
+          <h2 id="gather-title">This week</h2>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <p class="label">Sunday</p>
+            <h3>Worship service</h3>
+            <p>9:00 and 11:00 in the main sanctuary.</p>
+          </article>
+          <article class="card">
+            <p class="label">Wednesday</p>
+            <h3>Bible study</h3>
+            <p>Scripture, conversation, and prayer circles.</p>
+          </article>
+          <article class="card">
+            <p class="label">Saturday</p>
+            <h3>Community table</h3>
+            <p>Meals, care packs, and neighborhood support.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-grid" id="events" aria-labelledby="events-title">
+        <div class="section-heading">
+          <p class="eyebrow">Events & announcements</p>
+          <h2 id="events-title">Calendar-driven ministry.</h2>
+          <p>Weekly schedule, conferences, overnight prayers, Bible study reminders, and RSVP/register actions.</p>
+        </div>
+        <div class="event-stack">
+          <article class="event-hero">
+            <div>
+              <p class="label">Featured conference</p>
+              <h3>Called to become</h3>
+              <p>A worship and teaching night for the whole church.</p>
+            </div>
+            <div class="event-actions">
+              <button class="button primary" type="button" data-action="rsvp-event">RSVP</button>
+              <button class="button secondary" type="button" data-action="add-calendar">Add to calendar</button>
+            </div>
+          </article>
+          <div class="event-cards">
+            <article class="event-card">
+              <p class="label">Fri, May 22</p>
+              <h3>Overnight prayer</h3>
+              <dl>
+                <div><dt>Time</dt><dd>21:00</dd></div>
+                <div><dt>Venue</dt><dd>Main sanctuary</dd></div>
+                <div><dt>Speaker</dt><dd>Pastor Anna</dd></div>
+              </dl>
+              <button class="button secondary" type="button" data-action="add-calendar">Add to calendar</button>
+            </article>
+            <article class="event-card">
+              <p class="label">Wed, May 27</p>
+              <h3>Bible study reminder</h3>
+              <dl>
+                <div><dt>Time</dt><dd>18:30</dd></div>
+                <div><dt>Venue</dt><dd>Fellowship hall</dd></div>
+                <div><dt>Speaker</dt><dd>Teaching Team</dd></div>
+              </dl>
+              <button class="button secondary" type="button" data-action="add-calendar">Add to calendar</button>
+            </article>
+            <article class="event-card">
+              <p class="label">Sun, May 31</p>
+              <h3>Community service</h3>
+              <dl>
+                <div><dt>Time</dt><dd>14:00</dd></div>
+                <div><dt>Venue</dt><dd>City outreach tent</dd></div>
+                <div><dt>Speaker</dt><dd>Care Team</dd></div>
+              </dl>
+              <button class="button secondary" type="button" data-action="rsvp-event">Register</button>
+            </article>
+          </div>
+          <p class="event-state" id="eventState" aria-live="polite">Calendar ready.</p>
+        </div>
+      </section>
+
+      <section class="section-grid" id="bible" aria-labelledby="bible-title">
+        <div class="section-heading">
+          <p class="eyebrow">Bible & devotionals</p>
+          <h2 id="bible-title">Daily engagement.</h2>
+          <p>Daily verse, reading plans, devotional articles, notes, highlights, and audio Bible modules.</p>
+        </div>
+        <div class="bible-workspace">
+          <article class="daily-verse">
+            <p class="label">Today</p>
+            <h3>Psalm 46:10</h3>
+            <blockquote>Be still, and know that I am God.</blockquote>
+            <div class="audio-row">
+              <button class="button primary" type="button" data-action="play-audio">Play audio Bible</button>
+              <span id="audioState" aria-live="polite">Audio ready</span>
+            </div>
+          </article>
+          <div class="devotional-grid">
+            <article class="devotional-card">
+              <p class="label">Plans</p>
+              <h3>Seven days of becoming</h3>
+              <p>Day 3: identity, worship, and courage.</p>
+              <progress value="3" max="7">3 of 7</progress>
+            </article>
+            <article class="devotional-card">
+              <p class="label">Devotional article</p>
+              <h3>A steady heart</h3>
+              <p>A short reflection for prayer before the day begins.</p>
+              <button class="button secondary" type="button" data-action="save-devotional">Save article</button>
+            </article>
+          </div>
+          <form class="notes-panel" id="notesForm">
+            <label>
+              Notes and highlights
+              <textarea id="noteInput" placeholder="Write a note or highlight from today's reading..." required></textarea>
+            </label>
+            <button class="button primary" type="submit">Save note</button>
+          </form>
+          <div class="saved-notes" id="savedNotes" aria-label="Saved notes"></div>
+        </div>
+      </section>
+
+      <section class="prayer-section" id="prayer" aria-labelledby="prayer-title">
+        <div>
+          <p class="eyebrow">Prayer</p>
+          <h2 id="prayer-title">Let the church pray with you.</h2>
+          <p>Requests stay on this device for the demo and appear in your prayer wall.</p>
+        </div>
+        <form class="prayer-form" id="prayerForm">
+          <label>
+            Prayer request
+            <textarea id="prayerInput" placeholder="Write a request..." required></textarea>
+          </label>
+          <button class="button primary" type="submit">Add prayer</button>
+        </form>
+        <div class="prayer-wall" id="prayerWall" aria-label="Prayer wall"></div>
+      </section>
+
+      <section class="give-band" id="give" aria-labelledby="give-title">
+        <div>
+          <p class="eyebrow">Give</p>
+          <h2 id="give-title">Faithfulness made simple.</h2>
+          <p>Choose a giving path and keep the ministry moving.</p>
+        </div>
+        <div class="giving-controls" role="group" aria-label="Giving amount">
+          <button type="button" data-amount="25">$25</button>
+          <button type="button" data-amount="50">$50</button>
+          <button type="button" data-amount="100">$100</button>
+          <button type="button" data-amount="250">$250</button>
+        </div>
+      </section>
+
+      <section class="admin-dashboard" id="admin" aria-labelledby="admin-title">
+        <div class="admin-heading">
+          <p class="eyebrow">Admin dashboard</p>
+          <h2 id="admin-title">Manage the I AM app.</h2>
+          <p>Upload sermons, publish devotionals, create events, approve prayer requests, moderate chats, and review ministry analytics.</p>
+        </div>
+
+        <form class="admin-lock" id="adminLoginForm">
+          <div>
+            <p class="label">Secure admin login</p>
+            <h3 id="adminLockTitle">Sign in to continue</h3>
+            <p id="adminLockHelp">Use the admin email and passcode for this device. First sign-in creates the local admin gate for this demo.</p>
+          </div>
+          <label>
+            Admin email
+            <input name="adminEmail" type="email" autocomplete="username" placeholder="admin@iam.church" required />
+          </label>
+          <label>
+            Admin passcode
+            <input name="adminPasscode" type="password" autocomplete="current-password" placeholder="Admin passcode" minlength="10" required />
+          </label>
+          <label class="check-row">
+            <input name="rememberAdmin" type="checkbox" />
+            Keep admin session for 8 hours
+          </label>
+          <button class="button primary" type="submit">Unlock dashboard</button>
+          <p class="auth-state" id="adminAuthState" aria-live="polite">Admin dashboard locked</p>
+        </form>
+
+        <div class="admin-session-bar" data-admin-content>
+          <span id="adminSessionLabel">Admin signed in</span>
+          <button class="button secondary" type="button" data-action="admin-logout">Sign out</button>
+        </div>
+
+        <div class="admin-metrics" aria-label="Admin analytics" data-admin-content>
+          <article>
+            <span>Live viewers</span>
+            <strong id="metricViewers">248</strong>
+          </article>
+          <article>
+            <span>Prayer queue</span>
+            <strong id="metricPrayers">0</strong>
+          </article>
+          <article>
+            <span>Chat messages</span>
+            <strong id="metricChats">3</strong>
+          </article>
+          <article>
+            <span>Monthly giving</span>
+            <strong>$12.4k</strong>
+          </article>
+        </div>
+
+        <div class="admin-grid" data-admin-content>
+          <form class="admin-card" id="sermonAdminForm">
+            <p class="label">Sermons</p>
+            <h3>Upload sermon</h3>
+            <label>
+              Title
+              <input name="sermonTitle" type="text" placeholder="Sunday message title" required />
+            </label>
+            <label>
+              Speaker
+              <input name="sermonSpeaker" type="text" placeholder="Speaker name" required />
+            </label>
+            <label>
+              Media file
+              <input name="sermonFile" type="file" accept="audio/*,video/*" />
+            </label>
+            <button class="button primary" type="submit">Publish sermon</button>
+            <div class="admin-list" id="sermonList" aria-label="Uploaded sermons"></div>
+          </form>
+
+          <form class="admin-card" id="devotionalAdminForm">
+            <p class="label">Devotionals</p>
+            <h3>Publish devotional</h3>
+            <label>
+              Title
+              <input name="devotionalTitle" type="text" placeholder="Daily devotional title" required />
+            </label>
+            <label>
+              Scripture
+              <input name="devotionalVerse" type="text" placeholder="John 15:5" required />
+            </label>
+            <label>
+              Body
+              <textarea name="devotionalBody" placeholder="Write devotional text..." required></textarea>
+            </label>
+            <button class="button primary" type="submit">Publish devotional</button>
+            <div class="admin-list" id="devotionalList" aria-label="Uploaded devotionals"></div>
+          </form>
+
+          <form class="admin-card" id="eventAdminForm">
+            <p class="label">Events</p>
+            <h3>Create event</h3>
+            <label>
+              Event name
+              <input name="eventName" type="text" placeholder="Conference, prayer night..." required />
+            </label>
+            <label>
+              Date and time
+              <input name="eventDate" type="text" placeholder="Fri, Jun 12 - 19:00" required />
+            </label>
+            <label>
+              Venue
+              <input name="eventVenue" type="text" placeholder="Main sanctuary" required />
+            </label>
+            <button class="button primary" type="submit">Create event</button>
+            <div class="admin-list" id="createdEventList" aria-label="Created events"></div>
+          </form>
+
+          <article class="admin-card">
+            <p class="label">Prayer requests</p>
+            <h3>Approve queue</h3>
+            <div class="admin-list moderation-list" id="prayerQueue" aria-label="Prayer request approval queue"></div>
+          </article>
+
+          <article class="admin-card">
+            <p class="label">Chat moderation</p>
+            <h3>Live room messages</h3>
+            <div class="admin-list moderation-list" id="chatModerationList" aria-label="Chat moderation queue"></div>
+          </article>
+
+          <article class="admin-card analytics-card">
+            <p class="label">Analytics</p>
+            <h3>Engagement overview</h3>
+            <div class="analytics-bars" aria-label="Engagement analytics">
+              <div><span style="width: 82%"></span><strong>Live stream</strong></div>
+              <div><span style="width: 64%"></span><strong>Devotionals</strong></div>
+              <div><span style="width: 48%"></span><strong>Events</strong></div>
+              <div><span style="width: 72%"></span><strong>Prayer</strong></div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Kairos Living Glory Church</span>
+      <span>Worship. Word. Witness.</span>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
