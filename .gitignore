@@ -7,4 +7,3 @@ backend/data.json
 dist/
 build/
 .vscode/settings.json
-serviceAccountKey.json
