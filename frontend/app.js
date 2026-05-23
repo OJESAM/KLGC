@@ -248,6 +248,15 @@ window.addEventListener("load", async () => {
 
 boot.addEventListener("click", hideBoot);
 
+// Add click handler for the stream-live link specifically
+const streamLiveLink = document.querySelector(".stream-live");
+if (streamLiveLink) {
+  streamLiveLink.addEventListener("click", (event) => {
+    event.preventDefault();
+    hideBoot();
+  });
+}
+
 authForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   try {
